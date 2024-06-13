@@ -2,30 +2,36 @@ import React, { useState } from "react";
 import KeyboardButton from "./KeyboardButton";
 
 // variables
-const buttonsData = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const buttonsData = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const maxSymbols = 10;
 
 // ---------------------------------------------------------------
 const Keyboard = () => {
-  // const [value, setValue] = useState("")
   const [text, setText] = useState("");
+  const backSpace = () => setText((prev) => prev.slice(0, prev.length - 1));
+  const addSymbol = (symbol) => {
+    if (text.length >= maxSymbols) return null;
+    setText((prev) => prev + symbol);
+  };
+
   return (
     <div>
-      <p className="textField">{text}</p>
+      <div>
+        <p
+          style={text.length >= maxSymbols ? { borderColor: "red" } : {}}
+          className="textField"
+        >
+          {text}
+        </p>
+        {text.length >= maxSymbols && (
+          <p style={{ color: "red" }}>вы превысили лимит символов</p>
+        )}
+      </div>
       <div>
         {buttonsData.map((item) => (
-          // <KeyboardButton content={item} onClick={() => setText(text + item)} />
-          <KeyboardButton
-            content={item}
-            onClick={() => setText((prev) => prev + item)}
-          />
+          <KeyboardButton content={item} onClock={() => addSymbol(item)} />
         ))}
-        {/* <KeyboardButton content={"1"} onClick={() => setText(text + "1")} />
-        <KeyboardButton content={"2"} onClick={() => setText(text + "2")} />
-        <KeyboardButton content={"3"} onClick={() => setText(text + "3")} />
-        <KeyboardButton content={"4"} onClick={() => setText(text + "4")} /> */}
-        {/* <button onClick={() => setText(text + "4")}>
-          4
-        </button> */}
+        <button onClick={backSpace}>&larr;</button>
       </div>
     </div>
   );
