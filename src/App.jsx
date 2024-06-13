@@ -1,11 +1,11 @@
-import Counter from "./Counter";
+import Keyboard from "./pages/keyboard/Keyboard";
 
 // Компонент - функция, которая возвращает jsx разметку или null
 function App() {
   return (
     <div className="App">
-      <Counter />
-      {/* <button className="gameButton">Начать игру</button> */}
+      {/* <Counter /> */}
+      <Keyboard />
     </div>
   );
 }
