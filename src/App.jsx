@@ -1,6 +1,8 @@
 import Keyboard from "./pages/keyboard/Keyboard";
-import MadinaHW1 from "./hw/L02/madina/App";
 import { useState } from "react";
+import HomeWorks from "./pages/hws";
+
+// variables
 
 // Компонент - функция, которая возвращает jsx разметку или null
 function App() {
@@ -23,7 +25,7 @@ function App() {
       </header>
       {/* <Counter /> */}
       <div>
-        {showHWs && <MadinaHW1 />}
+        {showHWs && <HomeWorks />}
         {showLessons && <Keyboard />}
       </div>
     </div>
