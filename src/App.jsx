@@ -1,13 +1,48 @@
 import Keyboard from "./pages/keyboard/Keyboard";
+import MadinaHW1 from "./hw/L02/madina/App";
+import { useState } from "react";
 
 // Компонент - функция, которая возвращает jsx разметку или null
 function App() {
+  const [showHWs, setShowHWs] = useState(false);
+  const [showLessons, setShowLessons] = useState(false);
+
+  const toggleShowHWs = () => {
+    setShowHWs((prev) => !prev);
+    if (showLessons) setShowLessons(false);
+  };
+  const toggleShowLessons = () => {
+    setShowLessons((prev) => !prev);
+    if (showHWs) setShowHWs(false);
+  };
   return (
-    <div className="App">
+    <div>
+      <header>
+        <button onClick={toggleShowHWs}>HWs</button>
+        <button onClick={toggleShowLessons}>Lessons</button>
+      </header>
       {/* <Counter /> */}
-      <Keyboard />
+      <div>
+        {showHWs && <MadinaHW1 />}
+        {showLessons && <Keyboard />}
+      </div>
     </div>
   );
 }
 
 export default App;
+
+////
+// onClick={() => {
+//   // if (showHWs === true) {
+//   // if (showHWs) {
+//   //   setShowHWs(false);
+//   // } else {
+//   //   setShowHWs(true);
+//   // }
+//   //
+//   // setShowHWs(prev => {
+//   //   if (prev) return false
+//   //   else return true
+//   // })
+// }}

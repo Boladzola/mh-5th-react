@@ -1,16 +1,80 @@
 import React, { useState } from "react";
+import KeyboardButton from "./KeyboardButton";
 
+//  variables
+// const buttons = [
+//   {
+//     text: "AC",
+//     func: (setter = () => {}) => {
+//       return () => setter((prev) => prev.slice(0, prev.length - 1));
+//     },
+//     class: "AC",
+//   },
+//   {
+//     text: "/",
+//     // func: () => {},
+//     class: "sign",
+//   },
+//   {
+//     text: "*",
+//     // func: () => {},
+//     class: "sign",
+//   },
+// ];
+// --------------------------------------------------------------------------
 const Keyboard = () => {
   const [text, setText] = useState("");
   const backSpace = () => setText((prev) => prev.slice(0, prev.length - 1));
-
+  const buttons = [
+    {
+      text: "AC",
+      func: backSpace,
+      class: "AC",
+    },
+    {
+      text: "/",
+      func: (text) => setText((prev) => prev + text),
+      class: "sign",
+    },
+    {
+      text: "*",
+      func: (text) => setText((prev) => prev + text),
+      class: "sign",
+    },
+  ];
   return (
     <div>
       <p className="textField">{text}</p>
       <div className="buttons">
-        <button className="AC" onClick={backSpace}>AC</button>
+        {buttons.map((buttonItem) => (
+          <KeyboardButton
+            key={buttonItem.text}
+            text={buttonItem.text}
+            setText={() => setText(text + buttonItem.text)}
+            // setText={buttonItem.func}
+            // setText={
+            //   buttonItem.func
+            //     ? buttonItem.func(setText)
+            //     : () => setText((prev) => prev + text)
+            // }
+            className={buttonItem.class}
+          />
+        ))}
+        {/* <button className="AC" onClick={backSpace}>
+          AC
+        </button>
 
-        <button
+        <KeyboardButton
+          className={"sign"}
+          text={"/"}
+          setText={() => setText(text + "/")}
+        />
+        <KeyboardButton
+          className={"sign"}
+          text={"*"}
+          setText={() => setText(text + "*")}
+        /> */}
+        {/* <button
           className="sign"
           onClick={() => {
             setText(text + "/");
@@ -19,15 +83,14 @@ const Keyboard = () => {
           /
         </button>
 
-        <button
+        {/* <button
           className="sign"
           onClick={() => {
             setText(text + "*");
           }}
         >
           *
-        </button>
-
+        </button> */}
         <button
           onClick={() => {
             setText(text + "7");
@@ -35,7 +98,6 @@ const Keyboard = () => {
         >
           7
         </button>
-
         <button
           onClick={() => {
             setText(text + "8");
@@ -43,7 +105,6 @@ const Keyboard = () => {
         >
           8
         </button>
-
         <button
           onClick={() => {
             setText(text + "9");
@@ -51,7 +112,6 @@ const Keyboard = () => {
         >
           9
         </button>
-
         <button
           className="sign"
           onClick={() => {
@@ -60,7 +120,6 @@ const Keyboard = () => {
         >
           -
         </button>
-
         <button
           onClick={() => {
             setText(text + "4");
@@ -68,7 +127,6 @@ const Keyboard = () => {
         >
           4
         </button>
-
         <button
           onClick={() => {
             setText(text + "5");
@@ -76,7 +134,6 @@ const Keyboard = () => {
         >
           5
         </button>
-
         <button
           onClick={() => {
             setText(text + "6");
@@ -84,7 +141,6 @@ const Keyboard = () => {
         >
           6
         </button>
-
         <button
           className="sign"
           onClick={() => {
@@ -93,7 +149,6 @@ const Keyboard = () => {
         >
           +
         </button>
-
         <button
           onClick={() => {
             setText(text + "1");
@@ -101,7 +156,6 @@ const Keyboard = () => {
         >
           1
         </button>
-
         <button
           onClick={() => {
             setText(text + "2");
@@ -109,7 +163,6 @@ const Keyboard = () => {
         >
           2
         </button>
-
         <button
           onClick={() => {
             setText(text + "3");
@@ -117,7 +170,6 @@ const Keyboard = () => {
         >
           3
         </button>
-
         <button
           className="equal"
           onClick={() => {
@@ -126,7 +178,6 @@ const Keyboard = () => {
         >
           =
         </button>
-
         <button
           className="zero"
           onClick={() => {
@@ -135,7 +186,6 @@ const Keyboard = () => {
         >
           0
         </button>
-
         <button
           onClick={() => {
             setText(text + ",");

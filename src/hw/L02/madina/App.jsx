@@ -1,14 +1,12 @@
-import Keyboard from "./pages/keyboard/Keyboard";
+import Keyboard from "./Keyboard";
+import "./global.css";
 
 function App() {
   return (
     <div className="App">
       <div className="corp">
-        
-         <Keyboard />
-
+        <Keyboard />
       </div>
-     
     </div>
   );
 }
