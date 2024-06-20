@@ -1,9 +1,9 @@
 import React from "react";
 import "./global.css";
 
-const KeyboardButton = ({ text, setText, className }) => {
+const KeyboardButton = ({ text, onClick, className }) => {
   return (
-    <button className={className} onClick={setText}>
+    <button className={className} onClick={onClick}>
       {text}
     </button>
   );
