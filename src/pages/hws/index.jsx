@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MadinaHW2 from "../../hw/L02/madina/App";
+import MadinaHW2 from "../../hw/L02/Madina";
 import ShowOnClickButton from "../../components/ShowOnClickButton";
 
 // variables

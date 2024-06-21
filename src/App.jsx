@@ -1,6 +1,8 @@
 import Keyboard from "./pages/keyboard/Keyboard";
 import { useState } from "react";
 import HomeWorks from "./pages/hws";
+import ModulesStyles from "./hw/L03/module_example/App";
+import Calculator from "./pages/calculator";
 
 // variables
 
@@ -24,10 +26,12 @@ function App() {
         <button onClick={toggleShowLessons}>Lessons</button>
       </header>
       {/* <Counter /> */}
-      <div>
+      {/* <ModulesStyles /> */}
+      <Calculator />
+      {/* <div>
         {showHWs && <HomeWorks />}
         {showLessons && <Keyboard />}
-      </div>
+      </div> */}
     </div>
   );
 }
