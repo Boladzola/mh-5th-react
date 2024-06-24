@@ -69,7 +69,7 @@ const Calculator = () => {
         </Button>
       </Box>
       <Box className={styles.buttonContainer}>
-        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((item) => (
           <Button
             // sx={{ width: 80, height: 80 }}
             variant="contained"
