@@ -1,6 +1,6 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
-import styles from "./index.module.css";
+import styles from './index.module.css'
 
 const Calculator = () => {
   const [firstValue, setFirstValue] = useState(0);
@@ -29,36 +29,34 @@ const Calculator = () => {
   };
   return (
     <>
-      <Box>
+      <Box >
         <Box display={"flex"} gap={1}>
           <TextField
             value={firstValue}
-           
             disabled
           />
-          <Box>
-            SYMBOL <b>{symbol}</b>
-          </Box>
+          <Box>Symbol{symbol}</Box>
           <TextField value={lastValue} disabled />
         </Box>
         <Box>
           <Typography variant="h3">{getResult()}</Typography>
         </Box>
       </Box>
-      <Box display={"flex"} p={2}>
+      <Box display={"flex"} gap={1} p={2}>
         <Button
           sx={{ width: 80, height: 80 }}
           variant="contained"
           color="warning"
           onClick={() => {
-            const deleteLastInPrev = (prev) => {
+            const deletLastInPrev = (prev) => {
               const prevStr = prev + "";
               return prevStr.slice(0, prevStr.length - 1);
             };
+
             if (symbol) {
               if (!lastValue) setSymbol(null);
-              else setLastValue(deleteLastInPrev);
-            } else setFirstValue(deleteLastInPrev);
+              else setLastValue(deletLastInPrev);
+            } else setFirstValue(deletLastInPrev);
           }}
         >
           &larr;
@@ -67,22 +65,22 @@ const Calculator = () => {
       <Box className={styles.buttonContainer}>
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((item) => (
           <Button
-            // sx={{ width: 80, height: 80 }}
+            sx={{ width: 80, height: 80 }}
             variant="contained"
             color="warning"
             onClick={() => numberButtonOnClick(item)}
-            className={item.class}
           >
             {item}
           </Button>
         ))}
       </Box>
-      <Box display={"flex"} gap={"40px"} p={2}>
+
+      <Box display={"flex"} gap={1} p={2}>
         {["/", "*", "-", "+"].map((item) => (
           <Button
             sx={{ width: 80, height: 80 }}
             variant="contained"
-            color="secondary"
+            color="info"
             onClick={() => onClickToSymbol(item)}
           >
             {item}
